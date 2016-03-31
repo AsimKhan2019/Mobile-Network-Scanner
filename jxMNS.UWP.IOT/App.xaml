@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="jxMNS.UWP.IOT.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:jxMNS.UWP.IOT"
+    RequestedTheme="Light">
+
+</Application>
