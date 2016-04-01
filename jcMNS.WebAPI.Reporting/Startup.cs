@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -10,13 +11,17 @@ namespace jcMNS.WebAPI.Reporting {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; set; }
         
         public void ConfigureServices(IServiceCollection services) {
-            services.AddMvc();
+            services.AddMvcCore(options => {
+                options.OutputFormatters.Add(new JsonOutputFormatter());
+                options.InputFormatters.Add(new JsonInputFormatter());
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
