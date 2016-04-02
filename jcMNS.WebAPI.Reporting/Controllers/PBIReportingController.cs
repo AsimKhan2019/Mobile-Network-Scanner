@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using jcMNS.Library.WebAPI;
-using jcMNS.WebAPI.Reporting.PCL;
+using jcMNS.WebAPI.Reporting.Library.Transports.ReportListing;
 using Microsoft.AspNet.Mvc;
 
 namespace jcMNS.WebAPI.Reporting.Controllers {

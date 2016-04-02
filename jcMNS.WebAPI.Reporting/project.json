@@ -6,7 +6,7 @@
 
   "dependencies": {
     "jcMNS.Library.WebAPI": "1.0.0-*",
-    "jcMNS.WebAPI.Reporting.PCL": "1.0.0-*",
+    "jcMNS.WebAPI.Reporting.Library": "1.0.0-*",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
     "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-final",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
@@ -18,7 +18,10 @@
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
   },
-  
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  },
   "exclude": [
     "wwwroot",
     "node_modules"
