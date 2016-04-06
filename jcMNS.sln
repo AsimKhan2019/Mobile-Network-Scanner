@@ -27,6 +27,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "jcMNS.Library.DataLayer", "
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "jcMNS.WebAPI.Pingback.Library", "jcMNS.WebAPI.Pingback.Library\jcMNS.WebAPI.Pingback.Library.xproj", "{DC26072B-7CF0-4AFC-B161-2C99DF5A0343}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "jcMNS.WebAPI.Reporting.DataLayer", "jcMNS.WebAPI.Reporting.DataLayer\jcMNS.WebAPI.Reporting.DataLayer.xproj", "{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -240,6 +242,22 @@ Global
 		{DC26072B-7CF0-4AFC-B161-2C99DF5A0343}.Release|x64.Build.0 = Release|Any CPU
 		{DC26072B-7CF0-4AFC-B161-2C99DF5A0343}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC26072B-7CF0-4AFC-B161-2C99DF5A0343}.Release|x86.Build.0 = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|ARM.Build.0 = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|x64.Build.0 = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Debug|x86.Build.0 = Debug|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|ARM.ActiveCfg = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|ARM.Build.0 = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|x64.ActiveCfg = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|x64.Build.0 = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|x86.ActiveCfg = Release|Any CPU
+		{ACFA6B10-6AF2-4A97-AEA4-EB1D109D51D5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

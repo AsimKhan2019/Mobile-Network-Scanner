@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using jcMNS.WebAPI.Reporting.Managers;
+
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +24,8 @@ namespace jcMNS.WebAPI.Reporting {
                 options.OutputFormatters.Add(new JsonOutputFormatter());
                 options.InputFormatters.Add(new JsonInputFormatter());
             });
+
+            services.AddInstance(typeof(ReportingManager), new ReportingManager());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
