@@ -2,6 +2,5 @@
 
 namespace jcMNS.Library.WebAPI {
     [Route("api/[controller]")]
-    public class BaseController : Controller {
-    }
+    public class BaseController : Controller { }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using jcMNS.WebAPI.Pingback.Managers;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,8 @@ namespace jcMNS.WebAPI.Pingback {
                 options.OutputFormatters.Add(new JsonOutputFormatter());
                 options.InputFormatters.Add(new JsonInputFormatter());
             });
+
+            services.AddInstance(typeof (PingBackManager), new PingBackManager());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
