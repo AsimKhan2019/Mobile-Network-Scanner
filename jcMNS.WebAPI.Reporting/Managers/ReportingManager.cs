@@ -9,7 +9,10 @@ namespace jcMNS.WebAPI.Reporting.Managers {
     public class ReportingManager : BaseManager {
         public List<ReportListingItem> GetListing() {
             using (var eFactory = new ReportingDBFactory()) {
-                return eFactory.ListingItems.ToList();
+                return eFactory.ListingItems.ToList().Select(a => new ReportListingItem {
+                    Name = a.Description,
+                    ReportGUID = a.GUID
+                }).ToList();
             }
         }
     }
