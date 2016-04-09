@@ -18,6 +18,8 @@
     }
   },
   "dependencies": {
+    "EntityFramework.Core": "7.0.0-rc1-final",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
     "jcMNS.Library.DataLayer": "1.0.0-*",
     "jcMNS.WebAPI.Reporting.Library": "1.0.0-*"
   }
