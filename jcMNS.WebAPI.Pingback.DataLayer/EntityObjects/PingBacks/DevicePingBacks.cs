@@ -1,8 +1,8 @@
 ﻿using System;
 
 namespace jcMNS.WebAPI.Pingback.DataLayer.EntityObjects.PingBacks {
-    public class jcMNS_PingBacks {
-        public int ID { get; set; }
+    public class DevicePingBacks {
+        public Guid GUID { get; set; }
 
         public DateTimeOffset Created { get; set; }
 
@@ -11,7 +11,5 @@ namespace jcMNS.WebAPI.Pingback.DataLayer.EntityObjects.PingBacks {
         public bool Active { get; set; }
 
         public Guid DeviceGUID { get; set; }
-
-        public string Errors { get; set; }
     }
 }

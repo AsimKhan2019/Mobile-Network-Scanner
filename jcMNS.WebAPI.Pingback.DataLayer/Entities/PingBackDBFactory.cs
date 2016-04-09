@@ -5,6 +5,6 @@ using Microsoft.Data.Entity;
 
 namespace jcMNS.WebAPI.Pingback.DataLayer.Entities {
     public class PingBackDBFactory : EntityFactory {
-        public DbSet<jcMNS_PingBacks> PingBacks { get; set; } 
+        public DbSet<DevicePingBacks> PingBacks { get; set; } 
     }
 }

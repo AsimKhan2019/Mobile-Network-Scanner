@@ -9,14 +9,13 @@ namespace jcMNS.WebAPI.Pingback.Managers {
     public class PingBackManager : BaseManager {
         public bool CreatePingBack(PingBackRequestItem requestItem) {
             using (var eFactory = new PingBackDBFactory()) {
-                var nRow = new jcMNS_PingBacks();
+                var nRow = new DevicePingBacks();
 
                 nRow.Active = true;
                 nRow.Created = DateTimeOffset.Now;
                 nRow.Modified = DateTimeOffset.Now;
                 nRow.DeviceGUID = requestItem.DeviceGUID;
-                nRow.Errors = requestItem.Telemetry;
-
+                
                 eFactory.PingBacks.Add(nRow);
 
                 eFactory.SaveChanges();
