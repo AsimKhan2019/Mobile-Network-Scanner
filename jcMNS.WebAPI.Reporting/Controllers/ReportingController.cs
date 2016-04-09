@@ -9,10 +9,10 @@ using jcMNS.WebAPI.Reporting.Managers;
 using Microsoft.AspNet.Mvc;
 
 namespace jcMNS.WebAPI.Reporting.Controllers {
-    public class PBIReportingController : BaseController {
+    public class ReportingController : BaseController {
         private readonly ReportingManager _reportingManager;
 
-        public PBIReportingController(ReportingManager reportingManager) { _reportingManager = reportingManager; }
+        public ReportingController(ReportingManager reportingManager) { _reportingManager = reportingManager; }
 
         [HttpGet]
         public List<ReportListingItem> GET() => _reportingManager.GetListing();

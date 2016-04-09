@@ -20,22 +20,28 @@ namespace jcMNS.WebAPI.Reporting.Managers {
             }
         }
 
-        public ReportResponseItem GetReport(Guid reportGuid, Guid? objectGuid) {
+        private BaseReport getReport(Guid reportGuid) {
             var assemblyTypes = Assembly.Load(typeof(ReportingManager).GetTypeInfo().Assembly.GetName()).GetTypes();
 
             foreach (var type in assemblyTypes) {
-                if (type.DeclaringType != typeof (BaseReport)) {
+                if (type.DeclaringType != typeof(BaseReport)) {
                     continue;
                 }
 
                 var report = (BaseReport)Activator.CreateInstance(type);
 
                 if (report.ReportGUID() == reportGuid) {
-                    return report.RunReport(objectGuid);
+                    return report;
                 }
             }
 
             return null;
         }
+
+        public ReportExportResponseItem GetReportExport(Guid reportGuid, Guid? objectGuid)
+            => getReport(reportGuid).GenerateExport(objectGuid);
+
+        public ReportResponseItem GetReport(Guid reportGuid, Guid? objectGuid)
+            => getReport(reportGuid).RunReport(objectGuid);
     }
 }

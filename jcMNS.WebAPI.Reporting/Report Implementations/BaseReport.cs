@@ -12,6 +12,8 @@ namespace jcMNS.WebAPI.Reporting.Report_Implementations {
 
         public abstract ReportResponseItem RunReport(Guid? objectGUID = null);
 
+        public abstract string ReportFileName();
+
         public abstract string ReportTitle();
 
         public abstract void InitHeader();
@@ -51,6 +53,12 @@ namespace jcMNS.WebAPI.Reporting.Report_Implementations {
 
                 reportRow.AddCell(cell);
             }
+        }
+
+        public ReportExportResponseItem GenerateExport(Guid? objectGUID = null) {
+            var response = new ReportExportResponseItem();
+
+            return response;
         }
 
         protected ReportResponseItem GenerateAndReturn<T>(List<T> rows) {

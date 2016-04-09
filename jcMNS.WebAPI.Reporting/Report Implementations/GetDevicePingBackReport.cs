@@ -7,7 +7,11 @@ using jcMNS.WebAPI.Reporting.Library.Transports.Reports;
 namespace jcMNS.WebAPI.Reporting.Report_Implementations {
     public class GetDevicePingBackReport : BaseReport {
         public override Guid ReportGUID() => new Guid();
-        
+
+        public override string ReportFileName() {
+            return $"DevicePingBack-{DateTime.Now}";
+        }
+
         public override string ReportTitle() => "Device Ping Back History";
 
         public override void InitHeader() {
