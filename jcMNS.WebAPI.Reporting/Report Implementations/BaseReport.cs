@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
-
+using System.Text;
 using jcMNS.WebAPI.Reporting.Library.Transports.Reports;
 
 namespace jcMNS.WebAPI.Reporting.Report_Implementations {
-    public abstract  class BaseReport {
+    public abstract class BaseReport {
         private ReportResponseItem _reportResponseItem;
 
         public abstract Guid ReportGUID();
@@ -23,7 +24,7 @@ namespace jcMNS.WebAPI.Reporting.Report_Implementations {
         }
 
         public void InitResponseItem() {
-            _reportResponseItem = new ReportResponseItem {Title = ReportTitle()};
+            _reportResponseItem = new ReportResponseItem { Title = ReportTitle() };
 
             InitHeader();
         }
@@ -55,9 +56,28 @@ namespace jcMNS.WebAPI.Reporting.Report_Implementations {
             }
         }
 
-        public ReportExportResponseItem GenerateExport(Guid? objectGUID = null) {
-            var response = new ReportExportResponseItem();
+        private string generateCSV(ReportResponseItem responseItem) {
+            var str = string.Empty;
 
+            str += string.Join(",", responseItem.Headers);
+
+            str += string.Join(",", responseItem.Rows);
+
+            return str;
+        }
+
+        private byte[] convertStringToBytes(string data) {
+            return Encoding.ASCII.GetBytes(data);
+        }
+
+        public ReportExportResponseItem GenerateExport(Guid? objectGUID = null) {
+            var data = RunReport(objectGUID);
+
+            var response = new ReportExportResponseItem {
+                FileName = $"{ReportFileName()}.csv",
+                Data = convertStringToBytes(generateCSV(data))
+            };
+            
             return response;
         }
 
