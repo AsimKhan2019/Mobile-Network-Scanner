@@ -1,6 +1,7 @@
 ﻿using System;
 
 using jcMNS.Library.WebAPI;
+using jcMNS.WebAPI.Reporting.Library.Enums;
 using jcMNS.WebAPI.Reporting.Library.Transports.Reports;
 using jcMNS.WebAPI.Reporting.Managers;
 
@@ -13,7 +14,7 @@ namespace jcMNS.WebAPI.Reporting.Controllers {
         public ReportingExportController(ReportingManager reportingManager) { _reportingManager = reportingManager; }
 
         [HttpGet]
-        public ReportExportResponseItem GET(Guid reportGUID, Guid? objectGUID = null)
-            => _reportingManager.GetReportExport(reportGUID, objectGUID);
+        public ReportExportResponseItem GET(Guid reportGUID, ExportTypes exportType, Guid? objectGUID = null)
+            => _reportingManager.GetReportExport(reportGUID, objectGUID, exportType);
     }
 }

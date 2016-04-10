@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
-using System.Text;
+
+using jcMNS.WebAPI.Reporting.Library.Enums;
 using jcMNS.WebAPI.Reporting.Library.Transports.Reports;
+using jcMNS.WebAPI.Reporting.Report_Export;
 
 namespace jcMNS.WebAPI.Reporting.Report_Implementations {
     public abstract class BaseReport {
@@ -55,30 +56,35 @@ namespace jcMNS.WebAPI.Reporting.Report_Implementations {
                 reportRow.AddCell(cell);
             }
         }
+        
+        private BaseExport getReportExport(ExportTypes exportType) {
+            var assemblyTypes = Assembly.Load(typeof(BaseExport).GetTypeInfo().Assembly.GetName()).GetTypes();
 
-        private string generateCSV(ReportResponseItem responseItem) {
-            var str = string.Empty;
+            foreach (var type in assemblyTypes) {
+                if (type.DeclaringType != typeof(BaseExport)) {
+                    continue;
+                }
 
-            str += string.Join(",", responseItem.Headers);
+                var baseExport = (BaseExport)Activator.CreateInstance(type);
 
-            str += string.Join(",", responseItem.Rows);
+                if (baseExport.GetExportType() == exportType) {
+                    return baseExport;
+                }
+            }
 
-            return str;
+            return null;
         }
 
-        private byte[] convertStringToBytes(string data) {
-            return Encoding.ASCII.GetBytes(data);
-        }
-
-        public ReportExportResponseItem GenerateExport(Guid? objectGUID = null) {
+        public ReportExportResponseItem GenerateExport(ExportTypes exportType, Guid? objectGUID = null) {
             var data = RunReport(objectGUID);
 
-            var response = new ReportExportResponseItem {
-                FileName = $"{ReportFileName()}.csv",
-                Data = convertStringToBytes(generateCSV(data))
-            };
-            
-            return response;
+            var export = getReportExport(exportType);
+
+            if (export == null) {
+                throw new Exception($"No Export Implementation for {exportType}");
+            }
+
+            return export.GenerateExport(data);
         }
 
         protected ReportResponseItem GenerateAndReturn<T>(List<T> rows) {

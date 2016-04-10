@@ -5,6 +5,7 @@ using System.Reflection;
 
 using jcMNS.Library.WebAPI;
 using jcMNS.WebAPI.Reporting.DataLayer.Entities;
+using jcMNS.WebAPI.Reporting.Library.Enums;
 using jcMNS.WebAPI.Reporting.Library.Transports.ReportListing;
 using jcMNS.WebAPI.Reporting.Library.Transports.Reports;
 using jcMNS.WebAPI.Reporting.Report_Implementations;
@@ -38,8 +39,8 @@ namespace jcMNS.WebAPI.Reporting.Managers {
             return null;
         }
 
-        public ReportExportResponseItem GetReportExport(Guid reportGuid, Guid? objectGuid)
-            => getReport(reportGuid).GenerateExport(objectGuid);
+        public ReportExportResponseItem GetReportExport(Guid reportGuid, Guid? objectGuid, ExportTypes exportType)
+            => getReport(reportGuid).GenerateExport(exportType, objectGuid);
 
         public ReportResponseItem GetReport(Guid reportGuid, Guid? objectGuid)
             => getReport(reportGuid).RunReport(objectGuid);
